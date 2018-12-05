@@ -1,0 +1,27 @@
+{
+    "name": "dron-team/dron-accounting",
+    "description": "DRON Accounting Journals for Eloquent Models. Fork from https://github.com/scottlaurent/accounting",
+    "license": "MIT",
+    "keywords": ["laravel", "accounting"],
+    "authors": [
+        {
+            "name": "Scott Laurent",
+            "email": "scott@baselineapplications.com"
+        }
+    ],
+    "require": {
+        "moneyphp/money": "^3.0",
+        "ramsey/uuid": "^3.7"
+    },
+    "require-dev": {
+        "mockery/mockery": "^0.9.5",
+        "orchestra/testbench": "~3.4.0",
+        "orchestra/database": "~3.4.0",
+        "phpunit/phpunit": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Scottlaurent\\Accounting\\": "src/"
+        }
+    }
+}
