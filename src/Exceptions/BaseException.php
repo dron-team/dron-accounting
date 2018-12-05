@@ -1,6 +1,6 @@
 <?php
 
-namespace Scottlaurent\Accounting\Exceptions;
+namespace DromTeam\Accounting\Exceptions;
 
 use Exception;
 

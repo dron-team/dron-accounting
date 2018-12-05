@@ -1,12 +1,12 @@
 <?php
 
-namespace Scottlaurent\Accounting\ModelTraits;
+namespace DromTeam\Accounting\ModelTraits;
 
-use Scottlaurent\Accounting\Models\Journal;
+use DromTeam\Accounting\Models\Journal;
 
 /**
  * Class AccountingJournal
- * @package Scottlaurent\Accounting\ModelTraits
+ * @package DromTeam\Accounting\ModelTraits
  */
 trait AccountingJournal {
 	

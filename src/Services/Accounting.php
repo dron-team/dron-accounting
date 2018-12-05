@@ -1,21 +1,21 @@
 <?php
 
-namespace Scottlaurent\Accounting\Services;
+namespace DromTeam\Accounting\Services;
 
 use Carbon\Carbon;
-use Scottlaurent\Accounting\Models\Journal;
+use DromTeam\Accounting\Models\Journal;
 use Money\Money;
 use Money\Currency;
 
-use Scottlaurent\Accounting\Exceptions\InvalidJournalEntryValue;
-use Scottlaurent\Accounting\Exceptions\InvalidJournalMethod;
-use Scottlaurent\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
+use DromTeam\Accounting\Exceptions\InvalidJournalEntryValue;
+use DromTeam\Accounting\Exceptions\InvalidJournalMethod;
+use DromTeam\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
 
 use DB;
 
 /**
  * Class Accounting
- * @package Scottlaurent\Accounting\Services
+ * @package DromTeam\Accounting\Services
  */
 class Accounting
 {
