@@ -105,7 +105,8 @@ class Journal extends Model
      */
     public function updateCurrentBalances(?int $debit = 0, ?int $credit = 0)
     {
-        $this->balance = $this->balance - $debit + $credit;
+        $newbalance = $this->balance->getAmount() - $debit + $credit;
+        $this->balance = new Money($newbalance, new Currency($this->currency));
         $this->save();
     }
 
@@ -132,6 +133,7 @@ class Journal extends Model
 
     /**
      * @param Model $object
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function transactionsReferencingObjectQuery($object)
     {
