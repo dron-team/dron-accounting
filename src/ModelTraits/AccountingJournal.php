@@ -1,12 +1,12 @@
 <?php
 
-namespace DromTeam\Accounting\ModelTraits;
+namespace DronTeam\Accounting\ModelTraits;
 
-use DromTeam\Accounting\Models\Journal;
+use DronTeam\Accounting\Models\Journal;
 
 /**
  * Class AccountingJournal
- * @package DromTeam\Accounting\ModelTraits
+ * @package DronTeam\Accounting\ModelTraits
  */
 trait AccountingJournal {
 	

@@ -1,6 +1,6 @@
 <?php
 
-namespace DromTeam\Accounting\Exceptions;
+namespace DronTeam\Accounting\Exceptions;
 
 class TransactionCouldNotBeProcessed extends BaseException {
 	

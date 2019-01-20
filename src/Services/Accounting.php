@@ -1,21 +1,21 @@
 <?php
 
-namespace DromTeam\Accounting\Services;
+namespace DronTeam\Accounting\Services;
 
 use Carbon\Carbon;
-use DromTeam\Accounting\Models\Journal;
+use DronTeam\Accounting\Models\Journal;
 use Money\Money;
 use Money\Currency;
 
-use DromTeam\Accounting\Exceptions\InvalidJournalEntryValue;
-use DromTeam\Accounting\Exceptions\InvalidJournalMethod;
-use DromTeam\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
+use DronTeam\Accounting\Exceptions\InvalidJournalEntryValue;
+use DronTeam\Accounting\Exceptions\InvalidJournalMethod;
+use DronTeam\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
 
 use DB;
 
 /**
  * Class Accounting
- * @package DromTeam\Accounting\Services
+ * @package DronTeam\Accounting\Services
  */
 class Accounting
 {

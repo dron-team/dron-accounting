@@ -1,6 +1,6 @@
 <?php
 
-namespace DromTeam\Accounting\Models;
+namespace DronTeam\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Money\Money;
@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 /**
  * Class Journal
- * @package DromTeam\Accounting
+ * @package DronTeam\Accounting
  * @property    Money                  $balance
  * @property    string                 $currency
  * @property    Carbon                 $updated_at

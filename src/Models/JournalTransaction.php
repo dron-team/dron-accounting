@@ -1,13 +1,13 @@
 <?php
 
-namespace DromTeam\Accounting\Models;
+namespace DronTeam\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Ledger
  *
- * @package DromTeam\Accounting
+ * @package DronTeam\Accounting
  * @property    int $journal_id
  * @property    int $debit
  * @property    int $credit
@@ -59,7 +59,7 @@ class JournalTransaction extends Model
         });
 
         static::saved(function ($transaction) {
-            $transaction->journal->resetCurrentBalances();
+            $transaction->journal->updateCurrentBalances($transaction->debit, $transaction->credit);
         });
 
         static::deleted(function ($transaction) {

@@ -1,15 +1,15 @@
 <?php
 
-namespace DromTeam\Accounting\Models;
+namespace DronTeam\Accounting\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Money\Money;
-use Money\Currency;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Money\Currency;
+use Money\Money;
 
 /**
  * Class Journal
- * @package DromTeam\Accounting
+ * @package DronTeam\Accounting
  * @property    Money $balance
  * @property    string $currency
  * @property    Carbon $updated_at
@@ -95,6 +95,17 @@ class Journal extends Model
     public function resetCurrentBalances()
     {
         $this->balance = $this->getBalance();
+        $this->save();
+    }
+
+
+    /**
+     * @param int $debit
+     * @param int $credit
+     */
+    public function updateCurrentBalances(?int $debit = 0, ?int $credit = 0)
+    {
+        $this->balance = $this->balance - $debit + $credit;
         $this->save();
     }
 
