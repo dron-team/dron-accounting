@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DromTeam\\Accounting\\": "src/"
+            "DronTeam\\Accounting\\": "src/"
         }
     }
 }

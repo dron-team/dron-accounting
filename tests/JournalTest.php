@@ -4,7 +4,7 @@
 require_once ('BaseTest.php');
 
 use Money\Money;
-use DromTeam\Accounting\Models\Journal;
+use DronTeam\Accounting\Models\Journal;
 
 use Models\User;
 use Models\Account;

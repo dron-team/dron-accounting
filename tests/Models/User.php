@@ -3,7 +3,7 @@
 namespace Models;
 
 use Illuminate\Database\Eloquent\Model;
-use DromTeam\Accounting\ModelTraits\AccountingJournal;
+use DronTeam\Accounting\ModelTraits\AccountingJournal;
 
 /**
  * Class User

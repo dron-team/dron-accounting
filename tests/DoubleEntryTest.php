@@ -3,8 +3,8 @@
 // ensure we load our base file (PHPStorm Bug when using remote interpreter )
 require_once ('BaseTest.php');
 
-use DromTeam\Accounting\Services\Accounting as AccountingService;
-use DromTeam\Accounting\Models\JournalTransaction;
+use DronTeam\Accounting\Services\Accounting as AccountingService;
+use DronTeam\Accounting\Models\JournalTransaction;
 
 /**
  * Class LedgerTest
@@ -13,7 +13,7 @@ class DoubleEntryTest extends BaseTest
 {
 	
 	/**
-	 * @expectedException \DromTeam\Accounting\Exceptions\InvalidJournalMethod
+	 * @expectedException \DronTeam\Accounting\Exceptions\InvalidJournalMethod
 	 */
 	public function testMakingSureWeOnlySendDebitOrCreditCommands() {
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
@@ -21,7 +21,7 @@ class DoubleEntryTest extends BaseTest
 	}
 	
 	/**
-	 * @expectedException \DromTeam\Accounting\Exceptions\InvalidJournalEntryValue
+	 * @expectedException \DronTeam\Accounting\Exceptions\InvalidJournalEntryValue
 	 */
 	public function testMakingSureDoubleEntryValueIsNotZero() {
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
@@ -29,7 +29,7 @@ class DoubleEntryTest extends BaseTest
 	}
 	
 	/**
-	 * @expectedException \DromTeam\Accounting\Exceptions\InvalidJournalEntryValue
+	 * @expectedException \DronTeam\Accounting\Exceptions\InvalidJournalEntryValue
 	 */
 	public function testMakingSureDoubleEntryValueIsNotNegative() {
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
@@ -37,7 +37,7 @@ class DoubleEntryTest extends BaseTest
 	}
 	
 	/**
-	 * @expectedException \DromTeam\Accounting\Exceptions\DebitsAndCreditsDoNotEqual
+	 * @expectedException \DronTeam\Accounting\Exceptions\DebitsAndCreditsDoNotEqual
 	 */
 	public function testMakingSureDoubleEntryCreditsAndDebitsMatch() {
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();

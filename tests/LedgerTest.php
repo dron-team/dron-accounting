@@ -3,7 +3,7 @@
 // ensure we load our base file (PHPStorm Bug when using remote interpreter )
 require_once ('BaseTest.php');
 
-use DromTeam\Accounting\Services\Accounting as AccountingService;
+use DronTeam\Accounting\Services\Accounting as AccountingService;
 
 
 /**
