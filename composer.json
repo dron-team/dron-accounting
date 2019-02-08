@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "php": "^7.2",
         "moneyphp/money": "^3.0",
         "ramsey/uuid": "^3.7"
     },

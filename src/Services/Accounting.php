@@ -3,7 +3,9 @@
 namespace DromTeam\Accounting\Services;
 
 use Carbon\Carbon;
+use DromTeam\Accounting\Exceptions\TransactionCouldNotBeProcessed;
 use DromTeam\Accounting\Models\Journal;
+use Illuminate\Support\Facades\DB;
 use Money\Money;
 use Money\Currency;
 
@@ -11,7 +13,7 @@ use DromTeam\Accounting\Exceptions\InvalidJournalEntryValue;
 use DromTeam\Accounting\Exceptions\InvalidJournalMethod;
 use DromTeam\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
 
-use DB;
+
 
 /**
  * Class Accounting
@@ -44,7 +46,7 @@ class Accounting
      * @throws InvalidJournalMethod
      * @internal param int $value
      */
-	function addTransaction(Journal $journal, string $method, Money $money, string $memo = null, $referenced_object = null, Carbon $postdate = null) {
+	function addTransaction(Journal $journal, string $method, Money $money, ?string $memo = null, $referenced_object = null, Carbon $postdate = null) {
     	
     	if (!in_array($method,['credit','debit'])) {
     		throw new InvalidJournalMethod;
@@ -72,6 +74,8 @@ class Accounting
      * @param string|null $memo
      * @param null $referenced_object
      * @param Carbon|null $postdate
+     * @throws InvalidJournalEntryValue
+     * @throws InvalidJournalMethod
      */
 	function addDollarTransaction(Journal $journal, string $method, $value, string $memo = null, $referenced_object = null, Carbon $postdate = null) {
 		$value = (int) ($value*100);

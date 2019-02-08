@@ -206,28 +206,32 @@ class Journal extends Model
      * @param $value
      * @param null $memo
      * @param null $post_date
+     * @param null $transaction_group
+     * @param null $settings
      * @return JournalTransaction
      */
-    public function credit($value, $memo = null, $post_date = null, $transaction_group = null)
+    public function credit($value, $memo = null, $post_date = null, $transaction_group = null, $settings = null)
     {
         $value = is_a($value, Money::class)
             ? $value
             : new Money($value, new Currency($this->currency));
-        return $this->post($value, null, $memo, $post_date, $transaction_group);
+        return $this->post($value, null, $memo, $post_date, $transaction_group, $settings);
     }
 
     /**
      * @param $value
      * @param null $memo
      * @param null $post_date
+     * @param null $transaction_group
+     * @param null $settings
      * @return JournalTransaction
      */
-    public function debit($value, $memo = null, $post_date = null, $transaction_group = null)
+    public function debit($value, $memo = null, $post_date = null, $transaction_group = null, $settings = null)
     {
         $value = is_a($value, Money::class)
             ? $value
             : new Money($value, new Currency($this->currency));
-        return $this->post(null, $value, $memo, $post_date, $transaction_group);
+        return $this->post(null, $value, $memo, $post_date, $transaction_group, $settings);
     }
 
     /**
@@ -235,9 +239,11 @@ class Journal extends Model
      * @param Money $debit
      * @param $memo
      * @param Carbon $post_date
+     * @param null $transaction_group
+     * @param null $settings
      * @return JournalTransaction
      */
-    private function post(Money $credit = null, Money $debit = null, $memo = null, $post_date = null, $transaction_group)
+    private function post(Money $credit = null, Money $debit = null, $memo = null, $post_date = null, $transaction_group = null, $settings = null)
     {
 
         $transaction = new JournalTransaction;
@@ -249,7 +255,12 @@ class Journal extends Model
         $transaction->memo = $memo;
         $transaction->currency = $currency_code;
         $transaction->post_date = $post_date ?: Carbon::now();
-        $transaction->transaction_group = $transaction_group;
+        if ($transaction_group) {
+            $transaction->transaction_group = $transaction_group;
+        }
+        if ($settings) {
+            $transaction->settings = $settings;
+        }
         $this->transactions()->save($transaction);
         return $transaction;
     }
@@ -259,12 +270,13 @@ class Journal extends Model
      * @param $value
      * @param null $memo
      * @param null $post_date
+     * @param null $settings
      * @return JournalTransaction
      */
-    public function creditDollars($value, $memo = null, $post_date = null)
+    public function creditDollars($value, $memo = null, $post_date = null, $settings = null)
     {
         $value = (int)($value * 100);
-        return $this->credit($value, $memo, $post_date);
+        return $this->credit($value, $memo, $post_date, null, $settings);
     }
 
     /**
@@ -272,12 +284,13 @@ class Journal extends Model
      * @param $value
      * @param null $memo
      * @param null $post_date
+     * @param null $settings
      * @return JournalTransaction
      */
-    public function debitDollars($value, $memo = null, $post_date = null)
+    public function debitDollars($value, $memo = null, $post_date = null, $settings = null)
     {
         $value = (int)($value * 100);
-        return $this->debit($value, $memo, $post_date);
+        return $this->debit($value, $memo, $post_date, null, $settings);
     }
 
     /**

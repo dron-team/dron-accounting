@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property    int $credit
  * @property    string $currency
  * @property    string memo
+ * @property    string transaction_group
+ * @property    array settings
  * @property    \Carbon\Carbon $post_date
  * @property    \Carbon\Carbon $updated_at
  * @property    \Carbon\Carbon $created_at
@@ -46,6 +48,7 @@ class JournalTransaction extends Model
     protected $casts = [
         'post_date' => 'datetime',
         'tags' => 'array',
+        'settings'=>'array',
     ];
 
     /**
