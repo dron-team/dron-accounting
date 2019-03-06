@@ -106,12 +106,11 @@ class Journal extends Model
      */
     public function updateCurrentBalances(?int $debit = 0, ?int $credit = 0)
     {
-      return \DB::update('update accounting_journals set balance = balcance + ? - ? where id = ?', [
-        $this->id,
-        $credit,
-        $debit
+      return \DB::update('update accounting_journals set balance = balance + :credit - :debet where id = :journal_id', [
+        'journal_id' => $this->id,
+        'credit' => $credit,
+        'debet' => $debit
       ]);
-
     }
 
     /**
