@@ -2,6 +2,7 @@
 
 namespace DronTeam\Accounting\Models;
 
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Money\Currency;
@@ -105,18 +106,12 @@ class Journal extends Model
      */
     public function updateCurrentBalances(?int $debit = 0, ?int $credit = 0)
     {
-      $data_raw = \DB::select("
-        UPDATE accounting_journals
-        SET balance = balance + :credit - :debit
-        WHERE id =:model_id
-        ", [
-        'model_id' => $this->id,
-        'credit' => $credit,
-        'debit' => $debit,
+      return \DB::update('update accounting_journals set balance = balcance + ? - ? where id = ?', [
+        $this->id,
+        $credit,
+        $debit
       ]);
 
-//      $balance = data_get($data_raw, '0.balance', 0);
-//      return new Money($balance, new Currency($this->currency));
     }
 
     /**
