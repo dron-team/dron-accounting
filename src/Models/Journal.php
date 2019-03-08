@@ -101,15 +101,20 @@ class Journal extends Model
 
 
   /**
-   * @param int | null $debit
-   * @param int | null $credit
-   * @return
+   * Update current user balance
+   *
+   * @param int|null $debit
+   * @param int|null $credit
+   * @return int
    */
-    public function updateCurrentBalances(?int $debit = 0, ?int $credit = 0)
+  public function updateCurrentBalances(?int $debit = 0, ?int $credit = 0): int
     {
+      $debit = $debit ?? 0;
+      $credit = $credit ?? 0;
+
       return \DB::update('update accounting_journals set balance = balance + ? - ? where id = ?', [
-        (int)$credit,
-        (int)$debit,
+        $credit,
+        $debit,
         $this->id,
       ]);
     }
