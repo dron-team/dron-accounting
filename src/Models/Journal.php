@@ -34,14 +34,6 @@ class Journal extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function ledger()
-    {
-        return $this->belongsTo(Ledger::class);
-    }
-
-    /**
      * @var array
      */
     protected $dates = [
@@ -70,16 +62,6 @@ class Journal extends Model
         $this->currency = $currency;
     }
 
-
-    /**
-     * @param Ledger $ledger
-     * @return Journal
-     */
-    public function assignToLedger(Ledger $ledger)
-    {
-        $ledger->journals()->save($this);
-        return $this;
-    }
 
 
     /**
