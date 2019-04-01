@@ -13,8 +13,8 @@ class StringTypesFix extends Migration
     public function up()
     {
         Schema::table('accounting_journal_transactions', function (Blueprint $table) {
-            $table->string('memo', 120)->nullable();
-            $table->dropColumn('tags')->nullable();
+            $table->string('memo', 120)->nullable()->change();
+            $table->dropColumn('tags');
         });
     }
     
@@ -26,7 +26,7 @@ class StringTypesFix extends Migration
     public function down()
     {
         Schema::table('accounting_journal_transactions', function (Blueprint $table) {
-            $table->text('memo')->nullable();
+            $table->text('memo')->nullable()->change();
             $table->text('tags')->nullable();
         });
     }
