@@ -5,7 +5,7 @@ namespace DronTeam\Accounting\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Ledger
+ * Class JournalTransaction
  *
  * @package DronTeam\Accounting
  * @property    int $journal_id
@@ -40,15 +40,14 @@ class JournalTransaction extends Model
     /**
      * @var array
      */
-    protected $guarded=['id'];
+    protected $guarded = ['id'];
 
     /**
      * @var array
      */
     protected $casts = [
         'post_date' => 'datetime',
-        'tags' => 'array',
-        'settings'=>'array',
+        'settings' => 'array',
     ];
 
     /**
